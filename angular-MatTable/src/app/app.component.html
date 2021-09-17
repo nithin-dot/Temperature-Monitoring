@@ -1,0 +1,91 @@
+
+<div class="Card">
+  
+  <div class="CardInner">
+ 
+  <div class="container">
+   
+    
+    <div fxLayout fxLayoutAlign="center center">
+    <div class="Icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#657789" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </div>
+   
+    <div class="InputContainer">
+      <input matInput type="text" (keyup)="Filter($any($event.target).value)" placeholder="Search">
+    </div>
+    </div>
+    <div class="spacer"></div>
+    <img c alt="My image name" src="./assets/logo.svg" width="50">
+  </div>
+  </div>
+ </div>
+
+
+<table mat-table [dataSource]="dataSource  "  matSort class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container  matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell *matCellDef="let element"  [ngClass]="{
+        'positive' :element.Temperature < 100,
+        'negative' : element.Temperature > 100
+     }"> {{element.ID}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container  matColumnDef="Roll Number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Roll Number </th>
+      <td mat-cell *matCellDef="let element"  [ngClass]="{
+        'positive' :element.Temperature < 100,
+        'negative' : element.Temperature > 100
+     }"> {{element.ROLL}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Name" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      
+      <td  mat-cell *matCellDef="let element"  [ngClass]="{
+        'positive' :element.Temperature < 100,
+        'negative' : element.Temperature > 100
+     }" > {{element.NAME}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Temperature">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Temperature </th>
+      <td   mat-cell *matCellDef="let element"
+      [ngClass]="{
+        'positive' :element.Temperature < 100,
+        'negative' : element.Temperature > 100
+     }"> {{element.Temperature}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+      <td   mat-cell *matCellDef="let element"
+      [ngClass]="{
+        'positive' :element.Temperature < 100,
+        'negative' : element.Temperature > 100
+     }"> {{element.Time}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td   mat-cell *matCellDef="let element"
+      [ngClass]="{
+        'positive' :element.Temperature < 100,
+        'negative' : element.Temperature > 100
+     }"> {{element.Date}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSize]="30" [pageSizeOptions]="[30,50,100,200]">
+  </mat-paginator>
+  
